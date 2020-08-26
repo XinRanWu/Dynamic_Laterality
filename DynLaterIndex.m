@@ -11,6 +11,7 @@ function [DLI] = DynLaterIdx(data,atlas_path,l,r,w,s)
 %         Dynamic Laterality Index (DLI).
 ws = fix((size(data,1) - w)/s) + 1;
 DLI = zeros(ws,size(data,2));
+[roi_size] = atlas_roi_size(atlas_path)
 [gs_L] = roi2gs(data(:,l,:),roi_size(l));
 [gs_R] = roi2gs(data(:,r,:),roi_size(r));
 for j = 1:ws
